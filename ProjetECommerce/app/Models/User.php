@@ -13,6 +13,14 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasUuids;
 
+//    public function products()
+//    {
+//        return $this->belongsToMany(Product::class, 'product_user')->withPivot('comment');
+//    }
+    public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Product::class)->using(ProductUser::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -21,7 +29,7 @@ class User extends Authenticatable
     protected $fillable = [
         'firstname',
         'lastname',
-        'adress',
+        'address',
         'mail',
         'password',
         'role',

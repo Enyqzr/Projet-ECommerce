@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contents', function (Blueprint $table) {
-            $table->foreignUuid('order_id')->constrained()->cascadeOnDelete();
-            $table->foreignUuid('product_id')->constrained()->cascadeOnDelete();
-            $table->integer('quantity');
-
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('address');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contents');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('address');
+        });
     }
 };

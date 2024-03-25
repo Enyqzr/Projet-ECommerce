@@ -17,9 +17,18 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function order() {
-        return $this->belongsToMany(Order::class, 'contents', 'product_id', 'order_id')
+    public function orders() {
+        return $this->belongsToMany(Order::class, 'orders_products', 'product_id', 'order_id')
             ->withPivot('quantity');
+    }
+
+//    public function users() {
+//        return $this->belongsToMany(User::class, 'product_user')->withPivot('comment');
+//    }
+
+    public function users(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(User::class)->using(ProductUser::class);
     }
 
     protected $fillable = [

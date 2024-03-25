@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contents', function (Blueprint $table) {
-            $table->foreignUuid('order_id')->constrained()->cascadeOnDelete();
-            $table->foreignUuid('product_id')->constrained()->cascadeOnDelete();
-            $table->integer('quantity');
-
+        Schema::table('orders', function (Blueprint $table) {
+            $table->uuid('services_id')->nullable();
+            $table->foreign('services_id')->references('id')->on('services');
         });
     }
 
@@ -24,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contents');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropForeign(['services_id']);
+            $table->dropColumn('services_id');
+        });
     }
 };
