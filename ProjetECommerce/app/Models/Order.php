@@ -19,6 +19,7 @@ class Order extends Model
             ->withPivot('quantity');
     }
     protected $fillable = [
+        'user_id',
         'date',
     ];
 }
