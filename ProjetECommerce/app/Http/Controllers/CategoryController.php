@@ -15,9 +15,9 @@ class CategoryController extends Controller
 
         $categories = CategoryResource::collection(Category::all());
 
-        return response()->json([
-            'categories' => $categories
-        ]);
+        return response()->json(
+            $categories
+        );
     }
 
     public function show($id)
@@ -41,9 +41,9 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return response()->json([
-            'category' => $category
-        ]);
+        return response()->json(
+            $category
+        );
     }
 
     public function update($id, CategoryRequest $request){

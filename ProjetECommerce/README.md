@@ -1,10 +1,70 @@
-ReadMe E-Commerce Project:
+# ReadMe GreenHub Project (backend)
+
+----
+# Description
+
+--------
+
+# GreenHub ?
+
+GreenHub is the project I work on, the principle? An eco-responsible e-commerce site specializing in the sale of services and products.
+
+# Technos ?
+
+The backend part is develop in Laravel.
+
+# Installation 
+
+-------
+
+Requirements : 
+
+-  composer for php dependencies
+- mysql or equivalent 
+- php > 8.0
+-  Node and NPM is recommanded
+
+# U can now clone the project
+
+````
+git clone https://github.com/Enyqzr/Projet-ECommerce.git
+````
+````
+composer install
+````
+
+# Setting up the .env 
+
+- Duplicate the .env.example ans rename it to .env
+- In the .env modify with your database connection
+
+````
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=yourdatabasename
+DB_USERNAME=youruser
+DB_PASSWORD=yourpassword
+````
+Migrate the database
+````
+php artisan migrate
+````
+Seeding the database
+````
+php artisan db:seed
+````
+Start the server 
+````
+php artisan run serve
+````
+
 
 First of all, my project will focus on an ecological site that provides services and products in the ecological standard also, this is the back-end party of my site.
 
 I chose (not really it was requested) to initialize this project with Laravel via the following commands:
 ````
-- compose create-project laravel/Projet-ECommerce
+- composer create-project laravel/Projet-ECommerce
 - I also had to update my node version using nvm use 18
 ````
 For the database, I chose mySQL which is the DBMS with which I feel best and I have worked the most before.

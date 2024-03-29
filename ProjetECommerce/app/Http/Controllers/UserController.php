@@ -25,19 +25,18 @@ class UserController extends Controller
 
         $user->save();
 
-        return response()->json([
-            'message' => 'Utilisateur créé avec succès.',
-            'user' => new UserResource($user)
-        ]);
+        return response()->json(
+             new UserResource($user)
+        );
     }
 
     public function index()
     {
         $users = UserResource::collection(User::all());
 
-        return response()->json([
-            'users' => $users
-        ]);
+        return response()->json(
+            $users
+        );
     }
 
     public function show($id)
