@@ -33,11 +33,15 @@ class OrderController extends Controller
     public function store(OrderRequest $request)
     {
 
+        // Create a new Order instance with the validated data from the request, excluding the 'products' attribute
         $order = Order::create($request->safe()->except('products'));
 
+        // Check if the order's service is empty
         if (empty($order->service)) {
+            // If so, retrieve the products array from the request
             $products = $request->input('products');
             foreach ($products as $product) {
+                // Extract the product ID and quantity from each product array
                 $productId = $product['id'];
                 $quantity = $product['quantity'];
                 $order->products()->attach($productId, ['quantity' => $quantity]);
@@ -54,14 +58,18 @@ class OrderController extends Controller
     {
 
         $order = Order::find($id);
+        // Update the order with the validated data from the request, excluding the 'products' attribute
         $order->update($request->safe()->except('products'));
 
-        if(empty($order->service)){
+        // Check if the order's service is empty
+        if (empty($order->service)) {
+            // If so, retrieve the products array from the request
             $products = $request->input('products');
-            foreach ($products as $product){
+            foreach ($products as $product) {
+                // Extract the product ID and quantity from each product array
                 $productId = $product['id'];
-                    $quantity = $product['quantity'];
-                    $order->products()->attach($productId, ['quantity' => $quantity]);
+                $quantity = $product['quantity'];
+                $order->products()->attach($productId, ['quantity' => $quantity]);
             }
         }
 
@@ -72,7 +80,8 @@ class OrderController extends Controller
         ]);
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
 
         $order = Order::find($id);
         $order->delete();

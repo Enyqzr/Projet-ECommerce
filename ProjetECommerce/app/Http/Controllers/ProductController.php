@@ -21,7 +21,10 @@ class ProductController extends Controller
     }
     public function store(ProductRequest $request): JsonResponse
     {
+
+        // Extract the category name from the request input
         $categoryName = $request->input('category');
+        // Retrieve the category from the database based on the extracted category name
         $category = Category::where('name', $categoryName)->first();
 
         $product = new Product;
@@ -31,9 +34,9 @@ class ProductController extends Controller
         $product->category()->associate($category);
         $product->save();
 
-        return response()->json([
-            'product' => $product
-        ]);
+        return response()->json(
+            $product
+        );
     }
 
     public function show($id){
@@ -48,7 +51,9 @@ class ProductController extends Controller
     {
 
         $product = Product::find($id);
+        // Retrieve the category name from the request input
         $categoryName = $request->input('category');
+        // Find the category instance by its name
         $category = Category::where('name', $categoryName)->first();
         $product->name = $request->input('name');
         $product->price = $request->input('price');

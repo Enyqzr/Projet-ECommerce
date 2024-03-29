@@ -35,7 +35,9 @@ class ServiceController extends Controller
     //Add a service method  (POST)
     public function store(ServiceRequest $request){
 
+        //Extract user ID from the request input
         $userId = $request->input('user_id');
+        //Retrieve the user based on the extracted user ID
         $user = User::where('id' , $userId)->first();
         $service = new Service;
         $service->name = $request->input('name');
