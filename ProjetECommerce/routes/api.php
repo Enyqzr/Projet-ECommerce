@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -58,3 +59,10 @@ Route::get('orders/{id}', [OrderController::class, 'show']);
 Route::post('orders', [OrderController::class, 'store']);
 Route::put('orders/{id}', [OrderController::class, 'update']);
 Route::delete('orders/{id}', [OrderController::class, 'destroy']);
+
+Route::get('products_users', [ProductUserController::class, 'index']);
+Route::get('products_users/{id}', [ProductUserController::class, 'show']);
+Route::post('products_users', [ProductUserController::class, 'store']);
+Route::put('products_users/{id}', [ProductUserController::class, 'update']);
+Route::delete('products_users/{id}', [ProductUserController::class, 'destroy']);
+

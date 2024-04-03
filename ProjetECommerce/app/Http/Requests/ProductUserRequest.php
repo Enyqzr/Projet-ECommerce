@@ -11,7 +11,7 @@ class ProductUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class ProductUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'user_id'=>['required', 'uuid'],
+            'product_id'=>['required','uuid'],
+            'comment'=>['required']
         ];
     }
 }
