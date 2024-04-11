@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ServiceRequest;
 use App\Http\Resources\ServiceResource;
 use App\Models\Service;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 
 class ServiceController extends Controller

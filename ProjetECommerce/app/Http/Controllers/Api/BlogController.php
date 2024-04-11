@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogRequest;
 use App\Http\Resources\BlogResource;
 use App\Models\Blog;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {

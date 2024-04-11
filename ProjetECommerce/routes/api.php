@@ -1,13 +1,12 @@
 <?php
 
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductUserController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\ProductUserController;
+use App\Http\Controllers\Api\ServiceController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*

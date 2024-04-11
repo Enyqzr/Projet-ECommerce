@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductUserRequest;
 use App\Http\Resources\ProductUserResource;
 use App\Models\ProductUser;
-use App\Models\User;
-use Egulias\EmailValidator\Parser\Comment;
-use Illuminate\Http\Request;
 
 class ProductUserController extends Controller
 {
