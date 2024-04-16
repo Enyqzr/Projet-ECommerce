@@ -8,7 +8,6 @@
       <sourceFolder url="file://$MODULE_DIR$/ProjetECommerce/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/ProjetECommerce/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetECommerce/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetECommerce/vendor/carbonphp/carbon-doctrine-types" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetECommerce/vendor/composer" />
@@ -129,6 +128,7 @@
       <excludeFolder url="file://$MODULE_DIR$/ProjetECommerce/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetECommerce/vendor/phpdocumentor/type-resolver" />
       <excludeFolder url="file://$MODULE_DIR$/ProjetECommerce/vendor/phpstan/phpdoc-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/ProjetECommerce/vendor/laravel/telescope" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

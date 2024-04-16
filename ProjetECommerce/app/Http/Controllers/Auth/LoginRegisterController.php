@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-
-
-
-
-
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Validator;
 
 
 class LoginRegisterController extends Controller
@@ -26,5 +22,53 @@ class LoginRegisterController extends Controller
           'address' => 'test address'
       ]);
 
+      $data['token'] = $user->createToken($request->mail)->plainTextToken;
+      $data['user'] = $user;
+
+      $response = [
+          'data' => $data,
+      ];
+      return response()->json($response, 201);
+    }
+
+    public function login(Request $request){
+
+        $validate = Validator::make($request->all(),[
+            'mail' => 'required|string|email|',
+            'password' => 'required|string'
+        ]);
+
+        if($validate->fails()){
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Validation Error!',
+                'data' => $validate->errors(),
+            ], 403);
+        }
+        $user = User::where('mail', $request->mail)->first();
+
+        if(!$user || !Hash::check($request->password, $user->password)){
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Unauthorized!',
+            ], 401);
+        }
+        $data['token'] = $user->createToken($request->mail)->plainTextToken;
+        $data['user'] = $user;
+
+        $response = [
+            'status' => 'success',
+            'message' => 'Login Successful!',
+            'data' => $data,
+        ];
+        return response()->json($response, 200);
+    }
+
+    public function logout(Request $request){
+        auth()->user()->tokens()->delete();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Logout Successful!',
+        ], 200);
     }
 }
