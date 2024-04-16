@@ -24,9 +24,9 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 Route::group(['middleware'=>'auth:sanctum'],function(){
 
 
-//    Route::post('categories', [CategoryController::class, 'store']);
-//    Route::put('categories/{id}', [CategoryController::class, 'update']);
-//    Route::delete('categories/{id}', [CategoryController::class, 'destroy']);
+    Route::post('categories', [CategoryController::class, 'store']);
+    Route::put('categories/{id}', [CategoryController::class, 'update']);
+    Route::delete('categories/{id}', [CategoryController::class, 'destroy']);
 
     Route::post('products', [ProductController::class, 'store']);
     Route::put('products/{id}', [ProductController::class, 'update']);
@@ -39,6 +39,10 @@ Route::group(['middleware'=>'auth:sanctum'],function(){
     Route::post('services', [ServiceController::class, 'store']);
     Route::put('services/{id}', [ServiceController::class, 'update']);
     Route::delete('services/{id}', [ServiceController::class, 'destroy']);
+
+    Route::post('orders', [OrderController::class, 'store']);
+    Route::put('orders/{id}', [OrderController::class, 'update']);
+    Route::delete('orders/{id}', [OrderController::class, 'destroy']);
 
     Route::post('products_users', [ProductUserController::class, 'store']);
     Route::put('products_users/{id}', [ProductUserController::class, 'update']);

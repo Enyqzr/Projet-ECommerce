@@ -63,16 +63,16 @@ class OrderController extends Controller
         // Check if the order's service is empty
         if (empty($order->service)) {
             // If so, retrieve the products array from the request
-            $products = $request->input('products');
-            foreach ($products as $product) {
-                // Extract the product ID and quantity from each product array
-                $productId = $product['id'];
-                $quantity = $product['quantity'];
-                $order->products()->attach($productId, ['quantity' => $quantity]);
-            }
+            $products = collect($request->input('products'))->mapWithKeys(function ($product){
+                return [$product['id'] => ['quantity' => $product['quantity']]];
+            })->toArray();
+
+            $order->products()->sync($products);
+
         }
 
         $order->save();
+        $order = OrderResource::make($order);
 
         return response()->json([
             'order' => $order
