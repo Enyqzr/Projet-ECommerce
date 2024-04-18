@@ -34,23 +34,23 @@ class ProductUserPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Comment $comment): bool
+    public function update(User $user, ProductUser $productUser): bool
     {
-        return $user->id === $comment->user_id || $user->role === 'admin';
+        return $user->id === $productUser->user_id || $user->role === 'admin';
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Comment $comment): bool
+    public function delete(User $user, ProductUser $productUser): bool
     {
-        return $user->id === $comment->user_id || $user->role === 'admin';//
+        return $user->id === $productUser->user_id || $user->role === 'admin';//
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Comment $comment): bool
+    public function restore(User $user, ProductUser $productUser): bool
     {
         return $user->role === 'admin';
     }
