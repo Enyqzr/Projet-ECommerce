@@ -49,7 +49,6 @@ Route::group(['middleware'=>'auth:sanctum'],function(){
     Route::delete('products_users/{id}', [ProductUserController::class, 'destroy']);
 
     Route::post('logout', [LoginRegisterController::class, 'logout']);
-
 });
 
 Route::post('register', [LoginRegisterController::class, 'register']);
