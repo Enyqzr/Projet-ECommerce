@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Validator;
+//use Illuminate\Validation\Validator;
+use Illuminate\Support\Facades\Validator;
 
 
 class LoginRegisterController extends Controller
@@ -33,7 +34,7 @@ class LoginRegisterController extends Controller
 
     public function login(Request $request){
 
-        $validate = Validator::make($request->all(),[
+        $validate = Validator::make ($request->all(),[
             'mail' => 'required|string|email|',
             'password' => 'required|string'
         ]);

@@ -48,9 +48,13 @@ Route::group(['middleware'=>'auth:sanctum'],function(){
     Route::put('products_users/{id}', [ProductUserController::class, 'update']);
     Route::delete('products_users/{id}', [ProductUserController::class, 'destroy']);
 
+    Route::post('logout', [LoginRegisterController::class, 'logout']);
+
 });
 
 Route::post('register', [LoginRegisterController::class, 'register']);
+Route::post('login', [LoginRegisterController::class, 'login']);
+
 
 Route::post('users',[UserController::class,'store']);
 Route::get('users', [UserController::class, 'index']);
@@ -60,9 +64,6 @@ Route::delete('users/{id}', [UserController::class, 'destroy']);
 
 Route::get('categories', [CategoryController::class,  'index']);
 Route::get('categories/{id}', [CategoryController::class, 'show']);
-Route::post('categories', [CategoryController::class, 'store']);
-Route::put('categories/{id}', [CategoryController::class, 'update']);
-Route::delete('categories/{id}', [CategoryController::class, 'destroy']);
 
 Route::get('products', [ProductController::class, 'index']);
 Route::get('products/{id}', [ProductController::class, 'show']);
@@ -75,9 +76,7 @@ Route::get('services/{id}', [ServiceController::class, 'show']);
 
 Route::get('orders', [OrderController::class, 'index']);
 Route::get('orders/{id}', [OrderController::class, 'show']);
-Route::post('orders', [OrderController::class, 'store']);
-Route::put('orders/{id}', [OrderController::class, 'update']);
-Route::delete('orders/{id}', [OrderController::class, 'destroy']);
+
 
 Route::get('products_users', [ProductUserController::class, 'index']);
 Route::get('products_users/{id}', [ProductUserController::class, 'show']);
